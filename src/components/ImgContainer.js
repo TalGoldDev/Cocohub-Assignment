@@ -1,25 +1,19 @@
 import React from "react";
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  Button,
-  useDisclosure,
-  Text,
-  Flex,
-  Image,
-} from "@chakra-ui/react";
+import { useDisclosure, Text, Flex, Image } from "@chakra-ui/react";
+import ModalDisplay from "./ModalDisplay";
 
 const ImgContainer = (props) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { id, author, download_url, height, width, url } = props.img;
+  const {
+    isOpen: isModalOpen,
+    onOpen: openModal,
+    onClose: closeModal,
+  } = useDisclosure();
+
+  const { id, author, download_url } = props.img;
 
   return (
     <Flex
+      className="image-container"
       boxShadow="2xl"
       flexDirection="column"
       borderBottom="2px"
@@ -32,7 +26,7 @@ const ImgContainer = (props) => {
         transitionDuration: "1s",
       }}
       onClick={() => {
-        onOpen();
+        openModal();
       }}
     >
       <Flex
@@ -51,37 +45,30 @@ const ImgContainer = (props) => {
           src={download_url}
           marginRight="1vw"
         ></Image>
-        <Flex flexDirection="column" textAlign="left">
-          <Text fontSize="2xl" fontWeight="semibold">
-            Image number:{id}
-          </Text>
-          <p>Picture by: {author}</p>
 
-          <p>{download_url}</p>
-        </Flex>
+        <PictureData id={id} author={author} src={download_url} />
       </Flex>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Image by: {author}</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <img
-              alt={author}
-              width="100%"
-              height="100%"
-              src={download_url}
-            ></img>
-          </ModalBody>
+      <ModalDisplay
+        author={author}
+        src={download_url}
+        isModalOpen={isModalOpen}
+        closeModal={closeModal}
+      />
+    </Flex>
+  );
+};
 
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+const PictureData = (props) => {
+  return (
+    <Flex flexDirection="column" textAlign="left">
+      <Text fontSize="2xl" fontWeight="semibold">
+        Image number:{props.id}
+      </Text>
+      <Text>Picture by: {props.author}</Text>
+      <Text isTruncated width="60%">
+        {props.src}
+      </Text>
     </Flex>
   );
 };

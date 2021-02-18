@@ -7,7 +7,6 @@ import ImgContainer from "./ImgContainer";
 const ImageList = () => {
   const [imgs, setImgs] = useState(null);
   const [loading, setloading] = useState(true);
-  const [selectedPicture, setSelectedPicture] = useState(null);
 
   useEffect(() => {
     async function fetchImageData() {
@@ -17,10 +16,6 @@ const ImageList = () => {
     }
     fetchImageData();
   }, []);
-
-  useEffect(() => {
-    console.log("new selected picture is:", selectedPicture);
-  }, [selectedPicture]);
 
   if (loading) {
     return <div>Loading...</div>;
