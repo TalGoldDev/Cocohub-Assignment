@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { fetchPicturesData } from "../requests";
+import { Flex } from "@chakra-ui/react";
 
 import ImgContainer from "./ImgContainer";
 
@@ -25,20 +26,15 @@ const ImageList = () => {
     return <div>Loading...</div>;
   } else {
     return (
-      <div>
+      <Flex flexDirection="column" margin="auto" marginTop="1vh">
         {imgs.map((picture, i) => {
           return (
-            <div
-              key={i}
-              onClick={() => {
-                setSelectedPicture(i);
-              }}
-            >
+            <div key={i}>
               <ImgContainer img={picture} />
             </div>
           );
         })}
-      </div>
+      </Flex>
     );
   }
 };
