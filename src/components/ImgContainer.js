@@ -6,7 +6,7 @@ const ImgContainer = (props) => {
     <div>
       <h3>Image number:{id}</h3>
       <p>{author}</p>
-      <img width="350vw" height="350vh" src={download_url}></img>
+      <img alt={author} width="350vw" height="350vh" src={download_url}></img>
       <p>{download_url}</p>
       <p>
         {height},{width}
