@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { fetchPicturesData } from "./requests";
+import ImageList from "./components/ImageList";
 
 function App() {
   const [imgs, setImgs] = useState(null);
@@ -22,23 +23,7 @@ function App() {
       <div className="App">
         <div>Selected Picture</div>
         <div>Image list</div>
-        <div>
-          {imgs.map((picture) => {
-            return (
-              <div key={picture.id}>
-                <h3>Image number:{picture.id}</h3>
-                <p>{picture.author}</p>
-                <p>{picture.download_url}</p>
-                <p>
-                  {picture.height},{picture.width}
-                </p>
-                <p>{picture.url}</p>
-                <br />
-                <br />
-              </div>
-            );
-          })}
-        </div>
+        <ImageList imageList={imgs} />
       </div>
     );
   }
