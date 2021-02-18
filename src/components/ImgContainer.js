@@ -11,6 +11,7 @@ import {
   useDisclosure,
   Text,
   Flex,
+  Image,
 } from "@chakra-ui/react";
 
 const ImgContainer = (props) => {
@@ -21,10 +22,16 @@ const ImgContainer = (props) => {
     <Flex
       flexDirection="column"
       border="2px"
+      borderColor="gray.400"
       padding="1vw"
-      marginTop="1vh"
+      marginTop="2vh"
       rounded="2xl"
-      bgColor=""
+      bgColor="blue.100"
+      _hover={{
+        transition: "transform .2s",
+        transform: "scale(1.1)",
+        transitionDuration: "1s",
+      }}
       onClick={() => {
         onOpen();
       }}
@@ -34,7 +41,13 @@ const ImgContainer = (props) => {
           Image number:{id}
         </Text>
         <p>Picture by: {author}</p>
-        <img alt={author} width="350vw" height="350vh" src={download_url}></img>
+        <Image
+          marginX="auto"
+          alt={author}
+          width="40vh"
+          height="40vh"
+          src={download_url}
+        ></Image>
         <p>{download_url}</p>
       </Flex>
 

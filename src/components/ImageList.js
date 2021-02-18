@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { fetchPicturesData } from "../requests";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 
 import ImgContainer from "./ImgContainer";
 
@@ -27,6 +27,9 @@ const ImageList = () => {
   } else {
     return (
       <Flex flexDirection="column" margin="auto" marginTop="1vh">
+        <Text textAlign="center" fontSize="2xl" fontWeight="bold">
+          Image List
+        </Text>
         {imgs.map((picture, i) => {
           return (
             <div key={i}>
