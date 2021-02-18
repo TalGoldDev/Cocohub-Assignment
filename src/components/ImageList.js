@@ -27,7 +27,13 @@ const ImageList = () => {
   } else {
     return (
       <Flex flexDirection="column" margin="auto" marginTop="1vh">
-        <Text textAlign="center" fontSize="2xl" fontWeight="bold">
+        <Text
+          textAlign="center"
+          fontSize="5xl"
+          fontWeight="semibold"
+          marginBottom="1vh"
+          textColor="white"
+        >
           Image List
         </Text>
         {imgs.map((picture, i) => {

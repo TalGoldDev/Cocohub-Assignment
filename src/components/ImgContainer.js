@@ -20,13 +20,12 @@ const ImgContainer = (props) => {
 
   return (
     <Flex
+      boxShadow="2xl"
       flexDirection="column"
-      border="2px"
+      borderBottom="2px"
       borderColor="gray.400"
       padding="1vw"
-      marginTop="2vh"
-      rounded="2xl"
-      bgColor="blue.100"
+      bgColor="white"
       _hover={{
         transition: "transform .2s",
         transform: "scale(1.1)",
@@ -36,19 +35,30 @@ const ImgContainer = (props) => {
         onOpen();
       }}
     >
-      <Flex flexDirection="column" textAlign="center">
-        <Text fontSize="2xl" fontWeight="semibold">
-          Image number:{id}
-        </Text>
-        <p>Picture by: {author}</p>
+      <Flex
+        width="100%"
+        flexDirection="row"
+        textAlign="center"
+        alignItems="center"
+        justifyContent="space-between"
+      >
         <Image
+          boxShadow="2xl"
           marginX="auto"
           alt={author}
-          width="40vh"
-          height="40vh"
+          width="10vh"
+          height="10vh"
           src={download_url}
+          marginRight="1vw"
         ></Image>
-        <p>{download_url}</p>
+        <Flex flexDirection="column" textAlign="left">
+          <Text fontSize="2xl" fontWeight="semibold">
+            Image number:{id}
+          </Text>
+          <p>Picture by: {author}</p>
+
+          <p>{download_url}</p>
+        </Flex>
       </Flex>
 
       <Modal isOpen={isOpen} onClose={onClose}>
